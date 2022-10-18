@@ -1,5 +1,11 @@
 package main
 
+// В матрице M×N (строки×столбцы) нужно найти длиннейшую последовательность
+// одинаковых соседних цветов. Соседние цвета сравниваются по горизонтали и вертикали.
+// Для этой матрицы 2×3 ответ — 4:
+// 🔴🔴🔴
+// 🔴🟢🟢
+
 type color string
 
 func longestAdjColors(colors [][]color) int {
@@ -37,13 +43,6 @@ func countAdjacent(colors [][]color, lookup [][]bool, expected color, row, col i
 	return count
 }
 
-func max(a, b int) int {
-	if a >= b {
-		return a
-	}
-	return b
-}
-
 func makeLookupTable(colors [][]color) [][]bool {
 	lines, cols := len(colors), len(colors[0])
 	bools := make([][]bool, lines)
@@ -51,6 +50,13 @@ func makeLookupTable(colors [][]color) [][]bool {
 		bools[l] = make([]bool, cols)
 	}
 	return bools
+}
+
+func max(a, b int) int {
+	if a >= b {
+		return a
+	}
+	return b
 }
 
 func main() {}
